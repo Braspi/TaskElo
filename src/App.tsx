@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ModalTask from "./componets/modalTask";
+import Tags from "./componets/tags";
 
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
         setData(["Upcoming", "In Progress", "Done"])
     }, [])
   return (
-      <div className="container text-center m-sm-4">
+      <div className="container m-sm-4">
         <div className="row align-items-start d-flex">
             {data.map(it => (
             <div className="col">
@@ -18,10 +19,10 @@ function App() {
                       <div className="card-header">
                           {it}
                       </div>
-                  <div className="card-body border m-sm-4 rounded-2 ">
-                    <div className="bg-warning p-4"></div>
-                    <p>Plan marketing campaign</p>
-                   <ModalTask/>
+                  <div className="card-body border m-sm-4 rounded-2 flex flex-col justify-start">
+                      <Tags/>
+                      <p className="my-2">Plan marketing campaign</p>
+                      <ModalTask/>
                   </div>
               </div>
             </div>

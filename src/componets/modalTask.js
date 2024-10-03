@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Addons from "./addons.js";
+import Tags from "./tags";
 
 const ModalTask = () => {
     const [show, setShow] = useState(false);
@@ -10,15 +12,24 @@ const ModalTask = () => {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button>
+            <div className="flex justify-between">
+                <Addons/>
+                <Button variant="primary" onClick={handleShow}>
+                    Otwórz
+                </Button>
+            </div>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Zadanie #1</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+                    <div className="p-4 flex flex-col gap-2">
+                        <Tags/>
+                        <p>Zadanie numer jeden polegajace na jedym i drugim ktory robi cos t</p>
+                    </div>
+
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
