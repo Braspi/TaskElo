@@ -1,13 +1,15 @@
-import MarketingTag from "./tags/marketing.tag";
-import DesignTag from "./tags/design.tag";
-import SaleTag from "./tags/sale.tag";
+import { Tag } from "../../types";
 
-export default function Tags() {
+interface TagsT {
+  tags: Tag[]
+}
+
+export default function Tags({ tags }: TagsT) {
   return (
     <div className="flex gap-2 text-sm">
-      <MarketingTag />
-      <DesignTag />
-      <SaleTag />
+      {tags.map(tag => (
+        <div className="text-black p-1 px-2 rounded-md" style={{ "backgroundColor": tag.color }}>{tag.name}</div>
+      ))}
     </div>
   );
 };

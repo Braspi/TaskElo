@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Task } from '../../types';
 import Addons from "./addons.component";
-import Tags from "./tags.component";
 
-export default function ModalTask() {
+export default function ModalTask(task: Task) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -25,10 +25,8 @@ export default function ModalTask() {
         </Modal.Header>
         <Modal.Body>
           <div className="p-4 flex flex-col gap-2">
-            <Tags />
             <p>Zadanie numer jeden polegajace na jedym i drugim ktory robi cos t</p>
           </div>
-
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
