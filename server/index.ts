@@ -31,7 +31,6 @@ app.get("/users", (req, res) => {
 });
 
 app.get("/tasks", (req, res) => {
-  console.log("ja pierdole");
   try {
     const data = fs.readFileSync("./data/tasks.json", 'utf8');
     res.json(JSON.parse(data));
