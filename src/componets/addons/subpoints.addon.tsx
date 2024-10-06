@@ -1,10 +1,15 @@
 import { DocumentCheckIcon } from "@heroicons/react/24/solid";
+import { TasksModule } from "../../../types";
 
-export default function SubpointsAddon() {
+interface Props {
+  module: TasksModule
+};
+
+export default function SubpointsAddon(props: Props) {
   return (
     <div className="flex gap-2">
       <DocumentCheckIcon className="size-6" />
-      <p>1/4</p>
+      <p>{props.module.tasks.filter(it => it.isDone).length}/{props.module.tasks.length}</p>
     </div>
   );
 };
