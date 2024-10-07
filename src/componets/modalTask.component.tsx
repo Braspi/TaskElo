@@ -58,11 +58,11 @@ export default function ModalTask(task: Task) {
                   <>
                     <h3>Tasks:</h3>
                     <div>
-                      {tasks.tasks.map(task => {
+                      {tasks.tasks.map((task, i) => {
                         return (
                           <>
                             <div className="form-check">
-                              <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={task.isDone} />
+                              <input className="form-check-input" type="checkbox" id={i.toString()} checked={task.isDone} />
                               <label className="form-check-label">
                                 {task.title}
                               </label>
