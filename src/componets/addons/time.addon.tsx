@@ -6,10 +6,11 @@ interface Props {
 
 export default function TimeAddon(props: Props) {
   const formattedDate = new Date(props.date).toLocaleString('en-US', { month: "short", day: "numeric" });
+  const color = new Date(props.date) < new Date() ? "bg-green-900" : "";
   return (
-    <div className="flex gap-2">
+    <div className={`flex gap-1 justify-center items-center rounded p-1 ${color}`}>
       <ClockIcon className="size-6" />
-      <p>{formattedDate}</p>
+      <span>{formattedDate}</span>
     </div>
   );
 };

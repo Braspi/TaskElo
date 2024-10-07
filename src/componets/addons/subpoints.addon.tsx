@@ -7,9 +7,9 @@ interface Props {
 
 export default function SubpointsAddon(props: Props) {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 justify-center items-center">
       <DocumentCheckIcon className="size-6" />
-      <p>{props.module.tasks.filter(it => it.isDone).length}/{props.module.tasks.length}</p>
+      <span>{props.module.tasks.filter(it => it.isDone).length}/{props.module.tasks.length}</span>
     </div>
   );
 };

@@ -17,7 +17,7 @@ export default function ModalTask(task: Task) {
   return (
     <>
       <div className="flex justify-between">
-        <div className="flex gap-2 opacity-80">
+        <div className="flex gap-2 justify-center items-center opacity-80">
           {task.duedate ? <TimeAddon date={task.duedate} /> : ""}
           {task.modules.map(module => {
             if (module.type === "TextModule") {
