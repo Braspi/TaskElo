@@ -1,7 +1,7 @@
-import {JSX, useState} from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Task, TasksModule, TextModule } from '../../types';
+import { AttachmentModule, LocalizationModule, Task, TasksModule, TextModule } from '../../types';
 import AttachmentAddon from './addons/attachement.addon';
 import DescriptionAddon from './addons/description.addon';
 import LocationAddon from './addons/location.addon';
@@ -46,19 +46,48 @@ export default function ModalTask(task: Task) {
           <div className="p-4 flex flex-col gap-2">
             {task.modules.map(module => {
               if (module.type === "TextModule") {
-                return <p>{(module.value as TextModule).text}</p>;
+                return (
+                  <>
+                    <h3>Description:</h3>
+                    <p>{(module.value as TextModule).text}</p>
+                  </>
+                );
               } else if (module.type === "TasksModule") {
                 let tasks = module.value as TasksModule;
-                let a: JSX.Element[];
-                tasks.tasks.map(it => {
-                  return (
-                      <>
-                      </>
-                  );
-                })
-
+                return (
+                  <>
+                    <h3>Tasks:</h3>
+                    <div>
+                      {tasks.tasks.map(task => {
+                        return (
+                          <>
+                            <div className="form-check">
+                              <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={task.isDone} />
+                              <label className="form-check-label">
+                                {task.title}
+                              </label>
+                            </div>
+                          </>
+                        )
+                      })}
+                    </div>
+                  </>
+                );
               } else if (module.type === "AttachmentModule") {
+                let attachment = module.value as AttachmentModule;
+                return (
+                  <>
+                    <h3>Attachment:</h3>
+                    <img src={attachment.filePath} alt={attachment.name} />
+                  </>
+                )
               } else if (module.type === "LocalizationModule") {
+                let localization = module.value as LocalizationModule;
+                return (
+                  <>
+                    <h3>Location: {localization.name} at {localization.x} {localization.y}</h3>
+                  </>
+                )
               }
 
               return null;
