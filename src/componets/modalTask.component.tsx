@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {JSX, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Task, TasksModule, TextModule } from '../../types';
@@ -48,6 +48,15 @@ export default function ModalTask(task: Task) {
               if (module.type === "TextModule") {
                 return <p>{(module.value as TextModule).text}</p>;
               } else if (module.type === "TasksModule") {
+                let tasks = module.value as TasksModule;
+                let a: JSX.Element[];
+                tasks.tasks.map(it => {
+                  return (
+                      <>
+                      </>
+                  );
+                })
+
               } else if (module.type === "AttachmentModule") {
               } else if (module.type === "LocalizationModule") {
               }

@@ -1,9 +1,11 @@
 import express from "express";
 import fs from "node:fs";
+import cors from 'cors'
 
 const app = express();
 const port = 3000;
 
+app.use(cors())
 try {
   ["./data/users.json", "./data/tasks.json"].forEach(file => {
     if (!fs.existsSync(file)) {
